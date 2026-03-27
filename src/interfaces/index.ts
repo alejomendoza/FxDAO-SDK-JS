@@ -35,6 +35,7 @@ export enum UpdateVaultOperationType {
   increase_collateral = 'increase_collateral',
   increase_debt = 'increase_debt',
   pay_debt = 'pay_debt',
+  withdraw_collateral = 'withdraw_collateral',
 }
 
 export enum FxDAOContracts {

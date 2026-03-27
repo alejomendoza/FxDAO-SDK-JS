@@ -8,7 +8,9 @@
   "scripts": {
     "build": "npx rimraf ./lib && npx tsc -p .",
     "copyfiles": "cp ./package.json ./lib && cp ./LICENSE ./lib && cp ./README.md ./lib",
-    "all": "pnpm run build && pnpm run copyfiles"
+    "all": "pnpm run build && pnpm run copyfiles",
+    "test-withdraw": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"ESNext\"}' node --experimental-specifier-resolution=node --loader ts-node/esm ./src/scripts/test-withdraw.ts",
+    "test-withdraw:env": "if [ ! -f .env ]; then echo 'Missing .env file. Run: cp .env.example .env'; exit 1; fi; set -a; . ./.env; set +a; npm run test-withdraw"
   },
   "repository": {
     "url": "https://github.com/FxDAO/FxDAO-SDK-JS/"

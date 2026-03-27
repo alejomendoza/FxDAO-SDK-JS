@@ -182,6 +182,14 @@ export class VaultsContract {
             : 0n;
         break;
 
+      case UpdateVaultOperationType.withdraw_collateral:
+        updatedVault.total_collateral -= params.amount;
+        updatedVault.index = calculateVaultIndex({
+          debt: updatedVault.total_debt,
+          collateral: updatedVault.total_collateral,
+        });
+        break;
+
       default:
         throw new Error(`Operation type "${params.operationType}" is not supported`);
     }
